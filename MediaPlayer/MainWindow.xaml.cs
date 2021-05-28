@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,15 +26,48 @@ namespace MediaPlayer
             InitializeComponent();
         }
         private string VideoClipFilePath { get; set; }
+        private bool IsPlaying = false;
         private void openFileButton_Click(object sender, RoutedEventArgs e)
         {
-            VideoClipFilePath = @"C:\Users\Miras Talaspayev\Desktop\NU\Videos\me.mp4";
+            OpenFileDialog openFileDialog = new OpenFileDialog() { Multiselect = false };
+            openFileDialog.Filter = "Video Files (*.mp4; *.mvw)|*.mp4; *.mvw";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                VideoClipFilePath = openFileDialog.FileName;
+            }
+            
             videoClip.Source = new Uri(VideoClipFilePath);
         }
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            videoClip.Pause();
+            if (!IsPlaying)
+            {
+                videoClip.Play();
+                IsPlaying = true;
+                PlayButton.Content = "Pause";
+            }
+            else
+            {
+                videoClip.Pause();
+                IsPlaying = false;
+                PlayButton.Content = "Play";
+            }
+        }
+
+        private void Forward10s_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Back10s_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void VolumeOff_Click(object sender, RoutedEventArgs e)
+        {
+            videoClip.Volume = 0;
         }
     }
 }

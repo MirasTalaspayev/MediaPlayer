@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaPlayer"
-        mc:Ignorable="d" FontSize="18" MinWidth="350" MinHeight="100"
+        mc:Ignorable="d" 
+        FontSize="18" MinWidth="550" MinHeight="500"
+        Background="Black"
         WindowStartupLocation="CenterScreen"
         Title="MediaPlayer" Height="450" Width="800">
     
@@ -22,15 +24,20 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
-        <Button Name="VolumeOff" Grid.Column="0" Grid.Row="1" Content="Volume Off"/>
-        <Button Name="Back10s" Grid.Column="2" Grid.Row="1" Content="-10"/>
-        <Button Name="Forward10s" Grid.Column="4" Grid.Row="1" Content="-10"/>
-        <Button Name="PlayButton" Grid.Column="3" Grid.Row="1" Content="Pause" Click="PlayButton_Click"/>
-        <Button Name="openFileButton" Grid.Column="6" Grid.Row="1" Content="Open File" Click="openFileButton_Click"/>
+        <Button Name="VolumeOffB" Grid.Column="0" Grid.Row="1" Content="Volume Off"
+                Click="VolumeOff_Click"/>
+        <Button Name="Back10s" Grid.Column="2" Grid.Row="1" Content="-10"
+                Click="Back10s_Click"/>
+        <Button Name="Forward10s" Grid.Column="4" Grid.Row="1" Content="-10"
+                Click="Forward10s_Click"/>
+        <Button Name="PlayButton" Grid.Column="3" Grid.Row="1" Content="Play" 
+                Click="PlayButton_Click"/>
+        <Button Name="openFileButton" Grid.Column="6" Grid.Row="1" Content="Open File" 
+                Click="openFileButton_Click"/>
         <MediaElement 
             Name="videoClip" 
             Grid.Column="0" Grid.Row="0"
-            Grid.ColumnSpan="5"
+            Grid.ColumnSpan="7"
             LoadedBehavior="Manual"/>
     </Grid>
 </Window>
