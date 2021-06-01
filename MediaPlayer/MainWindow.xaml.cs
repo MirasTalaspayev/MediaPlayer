@@ -27,10 +27,11 @@ namespace MediaPlayer
         }
         private string VideoClipFilePath { get; set; }
         private bool IsPlaying = false;
+        private bool VolumeOn = true;
         private void openFileButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog() { Multiselect = false };
-            openFileDialog.Filter = "Video Files (*.mp4; *.mvw)|*.mp4; *.mvw";
+            //openFileDialog.Filter = "Video Files (*.mp4; *.mvw)|*.mp4; *.mvw|";
             if (openFileDialog.ShowDialog() == true)
             {
                 VideoClipFilePath = openFileDialog.FileName;
@@ -54,20 +55,59 @@ namespace MediaPlayer
                 PlayButton.Content = "Play";
             }
         }
+        private void PlayInputKeySpace(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                if (!IsPlaying)
+                {
+                    videoClip.Play();
+                    IsPlaying = true;
+                    PlayButton.Content = "Pause";
+                }
+                else
+                {
+                    videoClip.Pause();
+                    IsPlaying = false;
+                    PlayButton.Content = "Play";
+                }
+            }
+        }
 
         private void Forward10s_Click(object sender, RoutedEventArgs e)
         {
-
+            TimeSpan tenSeconds = new TimeSpan(0, 0, 10);
+            videoClip.Position.Add(tenSeconds);
         }
 
         private void Back10s_Click(object sender, RoutedEventArgs e)
         {
-
+            TimeSpan tenSeconds = new TimeSpan(0, 0, 10);
+            videoClip.Position.Subtract(tenSeconds);
         }
 
-        private void VolumeOff_Click(object sender, RoutedEventArgs e)
+        private void VolumeOffButton_Click(object sender, RoutedEventArgs e)
         {
-            videoClip.Volume = 0;
+            if (VolumeOn)
+            {
+                videoClip.Volume = 0;
+                VolumeOffButton.Content = "Volume Off";
+                VolumeOn = false;
+            }
+            else
+            {
+                videoClip.Volume = 100;
+                VolumeOffButton.Content = "Volume On";
+                VolumeOn = true;
+            }
+        }
+        /**
+         * TO-DO: 
+         * TimeCode. It should show time code of a video
+         */
+        private void TimeCode(object sender)
+        {
+            TempText.Text = videoClip.Position.Duration().ToString();
         }
     }
 }
