@@ -28,6 +28,9 @@ namespace MediaPlayer
         private string VideoClipFilePath { get; set; }
         private bool IsPlaying = false;
         private bool VolumeOn = true;
+        /**
+         * TO-DO: Add proper file filters.
+         */
         private void openFileButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog() { Multiselect = false };
@@ -73,17 +76,15 @@ namespace MediaPlayer
                 }
             }
         }
-
         private void Forward10s_Click(object sender, RoutedEventArgs e)
         {
             TimeSpan tenSeconds = new TimeSpan(0, 0, 10);
-            videoClip.Position.Add(tenSeconds);
+            videoClip.Position += tenSeconds;
         }
-
         private void Back10s_Click(object sender, RoutedEventArgs e)
         {
             TimeSpan tenSeconds = new TimeSpan(0, 0, 10);
-            videoClip.Position.Subtract(tenSeconds);
+            videoClip.Position += tenSeconds;
         }
 
         private void VolumeOffButton_Click(object sender, RoutedEventArgs e)
@@ -105,9 +106,6 @@ namespace MediaPlayer
          * TO-DO: 
          * TimeCode. It should show time code of a video
          */
-        private void TimeCode(object sender)
-        {
-            TempText.Text = videoClip.Position.Duration().ToString();
-        }
+        
     }
 }

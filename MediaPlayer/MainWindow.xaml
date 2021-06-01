@@ -41,8 +41,12 @@
             LoadedBehavior="Manual"/>
 
         <TextBlock 
-            Name="TempText" Grid.Row="1" Grid.Column="1" 
+            Name="TimeCode" Grid.Row="1" Grid.Column="1" 
             Text="TimeCode" Foreground="Green"
+            TextAlignment="Center"/>
+        <TextBlock 
+            Name="MediaDuration" Grid.Row="1" Grid.Column="5" 
+            Text="Duration" Foreground="Green"
             TextAlignment="Center"/>
     </Grid>
 </Window>
