@@ -13,6 +13,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -24,29 +25,41 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
-        <Button Name="VolumeOffButton" Grid.Column="0" Grid.Row="1" Content="Volume On"
+        <Button Name="VolumeOffButton" Grid.Column="0" Grid.Row="2" Content="Volume On"
                 Click="VolumeOffButton_Click"/>
-        <Button Name="Back10s" Grid.Column="2" Grid.Row="1" Content="-10"
+        <Button Name="Back10s" Grid.Column="2" Grid.Row="2" Content="-10"
                 Click="Back10s_Click"/>
-        <Button Name="Forward10s" Grid.Column="4" Grid.Row="1" Content="+10"
+        <Button Name="Forward10s" Grid.Column="4" Grid.Row="2" Content="+10"
                 Click="Forward10s_Click"/>
-        <Button Name="PlayButton" Grid.Column="3" Grid.Row="1" Content="Play" 
+        <Button Name="PlayButton" Grid.Column="3" Grid.Row="2" Content="Play" 
                 Click="PlayButton_Click"/>
-        <Button Name="openFileButton" Grid.Column="6" Grid.Row="1" Content="Open File" 
+        <Button Name="openFileButton" Grid.Column="6" Grid.Row="2" Content="Open File" 
                 Click="openFileButton_Click"/>
         <MediaElement 
             Name="videoClip" 
             Grid.Column="0" Grid.Row="0"
             Grid.ColumnSpan="7"
-            LoadedBehavior="Manual"/>
+            LoadedBehavior="Manual"
+            />
 
         <TextBlock 
-            Name="TimeCode" Grid.Row="1" Grid.Column="1" 
-            Text="TimeCode" Foreground="Green"
+            Name="TimeCode" Grid.Row="2" Grid.Column="1" 
+            Text="TimeCode"
+            Foreground="Green"
             TextAlignment="Center"/>
         <TextBlock 
-            Name="MediaDuration" Grid.Row="1" Grid.Column="5" 
+            Name="MediaDuration" Grid.Row="2" Grid.Column="5" 
             Text="Duration" Foreground="Green"
             TextAlignment="Center"/>
+        
+        <Slider x:Name="TimeSlider" 
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="7"
+                VerticalAlignment="Center"
+                Maximum="100"
+                Minimum="0"
+                Value="0" 
+                ValueChanged="TimeSlider_ValueChanged"/>
     </Grid>
 </Window>
