@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -41,7 +42,9 @@ namespace MediaPlayer
             }
             
             videoClip.Source = new Uri(VideoClipFilePath);
+            
         }
+
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
@@ -102,10 +105,16 @@ namespace MediaPlayer
                 VolumeOn = true;
             }
         }
+
+        private void TimeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            TimeCode.Text = TimeSlider.Value.ToString();
+        }
+
         /**
-         * TO-DO: 
-         * TimeCode. It should show time code of a video
-         */
-        
+* TO-DO: 
+* TimeCode. It should show time code of a video
+*/
+
     }
 }
